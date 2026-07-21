@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Game Catalog</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-games='["tisgame.json", "space-shooter.json", "puzzle-mania.json"]'>
+  <header>
+    <h1>🎮 My Game Catalog</h1>
+    
+    <!-- Navigation Buttons -->
+    <div class="nav-buttons">
+      <a href="/" class="nav-btn active" id="games-menu-btn">
+        📁 Games Menu
+      </a>
+      <a href="/proxy.html" class="nav-btn" id="proxy-btn">
+        🔓 Proxy
+      </a>
+    </div>
+
+    <!-- Search Bar (shows below nav on desktop) -->
+    <input type="text" id="search" placeholder="Search games..." onkeyup="filterGames()" />
+  </header>
+
+  <div id="games-grid"></div>
+
+  <footer>
+    <p>Made with ❤️ | Hosted on GitHub Pages</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
