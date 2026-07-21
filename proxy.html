@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Proxy</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .proxy-container {
+      max-width: 900px;
+      margin: 4rem auto;
+      padding: 2rem;
+      text-align: center;
+    }
+    .proxy-input {
+      width: 100%;
+      max-width: 600px;
+      padding: 1rem;
+      border-radius: 999px;
+      border: none;
+      background: #1e1f38;
+      color: #eee;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+    .proxy-go-btn {
+      padding: 1rem 2rem;
+      border-radius: 999px;
+      border: none;
+      background: #6d4aff;
+      color: white;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .proxy-status {
+      margin-top: 1.5rem;
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-buttons">
+      <a href="/" class="nav-btn">📁 Games Menu</a>
+      <a href="/proxy.html" class="nav-btn active">🔓 Proxy</a>
+    </div>
+  </header>
+
+  <div class="proxy-container">
+    <h2>🔓 Proxy Access</h2>
+    <input type="text" class="proxy-input" id="proxy-url" placeholder="Enter URL to proxy..." />
+    <br/>
+    <button class="proxy-go-btn" onclick="goToProxy()">Go</button>
+    <p class="proxy-status">Configure proxy settings in the code when ready.</p>
+  </div>
+
+  <script>
+    function goToProxy() {
+      const url = document.getElementById('proxy-url').value;
+      if (url) {
+        // TODO: Add your proxy logic here
+        window.location.href = url;
+      } else {
+        alert('Please enter a URL');
+      }
+    }
+  </script>
+</body>
+</html>
