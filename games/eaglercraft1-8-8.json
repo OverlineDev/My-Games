@@ -1,7 +1,7 @@
 {
-  "title": "Eaglercraft 1.8.8",
+  "title": "Eaglercraft",
   "genre": "Sandbox",
   "image": "./games/thumbnails/eaglercraft.png",
-  "url": "./games/files/eaglercraft1-8-8/index.html",
-  "description": "Minecraft 1.8.8 directly in your browser!"
+  "url": "https://overlinedev.github.io/Eaglercraft-launcher",
+  "description": "All official(and some unofficial) versions of Eaglercraft directly in your web browser! (Offline downloads are not currently available, and you will need a internet connection to load the games."
 }
