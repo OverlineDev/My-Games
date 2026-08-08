@@ -1,4 +1,3 @@
-
 let gamesList = [];
 let proxyMode = false;
 
@@ -7,11 +6,11 @@ document.getElementById('search').addEventListener('input', filterGames);
 // Toggle proxy mode (you'll implement actual logic later)
 function toggleProxy() {
   proxyMode = !proxyMode;
+
   const btn = document.getElementById('proxy-btn');
   btn.textContent = proxyMode ? '🔒 Proxy OFF' : '🔓 Proxy Mode';
   btn.classList.toggle('active', proxyMode);
-  
-  // Optional: re-render cards if proxy mode affects URL handling
+
   renderGames(gamesList);
 }
 
@@ -49,9 +48,6 @@ async function loadGames() {
   return allGames;
 }
 
-  return allGames;
-}
-
 // Render game cards
 function renderGames(list) {
   const grid = document.getElementById('games-grid');
@@ -59,17 +55,17 @@ function renderGames(list) {
 
   list.forEach(game => {
     const card = document.createElement('a');
+
     card.href = proxyMode && !game.isLocal ? '#' : game.url;
-    
+
     // If proxy mode is on and it's not a local file, don't navigate yet
     if (proxyMode && !game.isLocal) {
       card.onclick = (e) => {
         e.preventDefault();
         alert('Proxy mode active! Configure your proxy handler here.');
-        // Your proxy logic will go here later
       };
     }
-    
+
     card.target = game.isLocal ? '_self' : '_blank';
     card.className = 'game-card';
 
@@ -86,6 +82,7 @@ function renderGames(list) {
         ${game.isLocal ? '<span class="local-badge">⬇️ Local File</span>' : ''}
       </div>
     `;
+
     grid.appendChild(card);
   });
 }
@@ -93,11 +90,13 @@ function renderGames(list) {
 // Search filter
 function filterGames() {
   const term = document.getElementById('search').value.toLowerCase();
+
   const filtered = gamesList.filter(g =>
     g.title.toLowerCase().includes(term) ||
     (g.genre && g.genre.toLowerCase().includes(term)) ||
     (g.description && g.description.toLowerCase().includes(term))
   );
+
   renderGames(filtered);
 }
 
