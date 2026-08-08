@@ -6,10 +6,8 @@
   <title>OverlineDev's Game Catalog</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body data-games='["eaglercraft1-8-8.json", "pokemon_fire_red.json", "hills_of_steel.json"]'>
-  <!-- <body data-games='["tisgame.json", "space-shooter.json", "puzzle-mania.json"]'> 
-  This is syntax for when new games added.
-  -->
+<body>
+ 
   <header>
     <h1>🎮 Game Catalog</h1>
     
@@ -24,8 +22,12 @@
     </div>
 
     <!-- Search Bar (shows below nav on desktop) -->
-    <input type="text" id="search" placeholder="Search games..." onkeyup="filterGames()" />
-  </header>
+<input
+  type="text"
+  id="search"
+  placeholder="Search games..."
+  aria-label="Search games"
+/>  </header>
 
   <div id="games-grid"></div>
 

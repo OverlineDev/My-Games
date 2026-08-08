@@ -1,8 +1,8 @@
-// Parse game list from data attribute
-const gameFiles = JSON.parse(document.body.dataset.games);
 
 let gamesList = [];
 let proxyMode = false;
+
+document.getElementById('search').addEventListener('input', filterGames);
 
 // Toggle proxy mode (you'll implement actual logic later)
 function toggleProxy() {
@@ -19,22 +19,35 @@ function toggleProxy() {
 async function loadGames() {
   const allGames = [];
 
-  for (const file of gameFiles) {
-    try {
-      const res = await fetch(`games/${file}`);
-      const gameData = await res.json();
-      
-      // Handle both URL and local file paths
-      if (gameData.url) {
-        gameData.isLocal = gameData.url.startsWith('/games-files/') 
-                          || gameData.url.startsWith('./games-files/');
+  try {
+    // Load the list of game JSON files
+    const listRes = await fetch('games/games.json');
+    const gameFiles = await listRes.json();
+
+    // Load each game's information
+    for (const file of gameFiles) {
+      try {
+        const res = await fetch(`games/${file}`);
+        const gameData = await res.json();
+
+        // Handle both URL and local file paths
+        if (gameData.url) {
+          gameData.isLocal =
+            gameData.url.startsWith('/games-files/') ||
+            gameData.url.startsWith('./games-files/');
+        }
+
+        allGames.push(gameData);
+      } catch (err) {
+        console.warn(`Failed to load ${file}:`, err);
       }
-      
-      allGames.push(gameData);
-    } catch (err) {
-      console.warn(`Failed to load ${file}:`, err);
     }
+  } catch (err) {
+    console.error('Failed to load games.json:', err);
   }
+
+  return allGames;
+}
 
   return allGames;
 }
